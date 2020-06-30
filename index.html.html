@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to Table</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+   <div class="container">
+       <div class="table-responsive">
+
+         <h1>JSON to HTML Table</h1>
+         <br />
+         
+         <table class="table table-bordered table striped" id="employee_table">
+             <tr>
+                 <th>ID</th>
+                 <th>Name</th>
+                 <th>Type</th>
+             </tr>
+         </table>
+       </div>
+   </div>
+    
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function(){
+        $.getJSON("sample.json", function(data){
+           var employee_data = '';
+           $.each(data, function(key, value){
+                employee_data += '<tr>';
+                employee_data += '<td>'+value.ID+'</td>';
+                employee_data += '<td>'+value.Name+'</td>';
+                employee_data += '<td>'+value.Type+'</td>';
+                employee_data += '</tr>';
+
+
+           });
+           $('#employee_table').append(employee_data);
+        });
+    });
+</script>
